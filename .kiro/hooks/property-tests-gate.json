@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Property tests must pass before finishing",
+      "description": "Runs the fast-check property suite when the turn touched packages/core or fixtures. Exit 1 starts another agent turn with the failure as the reason, so a turn cannot end on a red property.",
+      "trigger": "Stop",
+      "timeout": 300,
+      "action": {
+        "type": "command",
+        "command": "./scripts/hooks/check-properties.sh"
+      }
+    }
+  ]
+}

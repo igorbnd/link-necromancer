@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Typecheck and test on core save",
+      "description": "On saving a packages/core source file, typechecks the package and runs the tests that import that file. No-ops until the workspace is scaffolded. IDE and CLI only; file triggers do not fire in Kiro Web.",
+      "trigger": "PostFileSave",
+      "matcher": "packages/core/src/.*\\.ts$",
+      "timeout": 180,
+      "action": {
+        "type": "command",
+        "command": "./scripts/hooks/check-core-save.sh {{filePath}}"
+      }
+    }
+  ]
+}

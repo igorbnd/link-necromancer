@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Session status",
+      "description": "Reports branch, working tree, scaffolding state, credential presence and spec task progress at session start. Credential presence only, never values.",
+      "trigger": "SessionStart",
+      "timeout": 30,
+      "action": {
+        "type": "command",
+        "command": "./scripts/hooks/session-status.sh"
+      }
+    }
+  ]
+}
