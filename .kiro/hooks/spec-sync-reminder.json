@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Spec documents may be out of sync",
+      "description": "Fires when a spec's requirements.md changes, because design.md and tasks.md almost always need a matching edit. IDE and CLI only.",
+      "trigger": "PostFileSave",
+      "matcher": "\\.kiro/specs/.*/requirements\\.md$",
+      "action": {
+        "type": "agent",
+        "prompt": "A spec's requirements.md just changed. Before moving on, check whether that spec's design.md and tasks.md still match it: a new or altered acceptance criterion usually needs a design decision and at least one task, and every task should still carry a _Requirements:_ reference that resolves. If the change touched the verdict or cause vocabulary, check .kiro/steering/product.md and the other four specs too, since that vocabulary is shared across all of them. Report what you changed or state plainly that nothing else needed changing."
+      }
+    }
+  ]
+}

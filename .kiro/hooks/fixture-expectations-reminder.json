@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Haunted repo expectations may be stale",
+      "description": "Fires when the seeded demo repo changes. The acceptance test asserts expected.json row by row, so a new planted case without a row is silently unverified. IDE and CLI only.",
+      "trigger": "PostFileSave",
+      "matcher": "fixtures/haunted-repo/.*",
+      "action": {
+        "type": "agent",
+        "prompt": "The seeded haunted repo changed. Check that fixtures/haunted-repo/expected.json still covers every link in it, with the expected (verdict, cause) pair for each. A planted case with no row in expected.json is not actually verified by the acceptance test, which is the project's definition of done. If a new URL was added, confirm a provider fixture exists for it in fixtures/cache/ as well, because the test suite runs the cache in replay mode and a miss throws."
+      }
+    }
+  ]
+}

@@ -8,7 +8,10 @@ validates so each stage has a target to hit.
   - pnpm workspace with `packages/core`, `apps/cli`, `apps/web`, `apps/action`, `apps/mcp`
   - TypeScript project references, strict mode, `node20` target, ESM
   - Vitest + fast-check, ESLint, Prettier, MIT license, `.kiro/` committed
-  - CI workflow: typecheck, lint, test on push and PR
+  - Root scripts the committed hooks already call: `test` (`vitest --run`), `test:prop`
+    (`vitest --run` over `*.prop.test.ts` only), `typecheck`, `lint`. The hooks in `.kiro/hooks/`
+    no-op until these exist, then go live with no edit.
+  - CI workflow: typecheck, lint, test, plus `scripts/hooks/check-secrets.sh --all`
   - _Requirements: all (foundation)_
 
 - [ ] 2. Types, verdict vocabulary and config

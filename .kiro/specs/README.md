@@ -21,6 +21,15 @@ redefine it elsewhere. Two fields travel together through the whole system:
 - **`cause`** — why the link is broken: `OK`, `HTTP_ERROR`, `NETWORK_ERROR`, `PARKED`, `SOFT_404`, `CONTENT_DRIFT`.
 - **`verdict`** — what to do about it: `ALIVE`, `RESURRECTED`, `ARCHIVED`, `DRIFTED`, `PARKED`, `SOFT_404`, `UNRESOLVED`.
 
+## Other `.kiro/` configuration
+
+- [`.kiro/steering/`](../steering/) — six steering files. `product.md`, `structure.md` and `tech.md`
+  load on every turn; `testing.md` and `providers.md` load when the matching files are open;
+  `demo-runbook.md` is pulled in on demand with `#demo-runbook`.
+- [`.kiro/hooks/`](../hooks/) — six agent hooks, with the logic in `scripts/hooks/`. See
+  [the hooks README](../hooks/README.md) for which triggers fire on which surface; the
+  `PostFileSave` ones do not fire in Kiro Web.
+
 ## Provenance
 
 The product brief these specs were written from, and the background research behind it, were
